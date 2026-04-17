@@ -6,7 +6,7 @@ import { createBodies, BallDef } from '../physics/createBodies';
 export function usePhysicsEngine(screenWidth: number, screenHeight: number) {
   const result = useMemo(() => {
     if (screenWidth === 0 || screenHeight === 0) {
-      return { engine: null as Matter.Engine | null, balls: [] as BallDef[], walls: [] as Matter.Body[] };
+      return { engine: null as Matter.Engine | null, balls: [] as BallDef[] };
     }
     const engine = createEngine();
     const { balls, walls } = createBodies(screenWidth, screenHeight);
@@ -14,7 +14,7 @@ export function usePhysicsEngine(screenWidth: number, screenHeight: number) {
       ...balls.map((b) => b.body),
       ...walls,
     ]);
-    return { engine, balls, walls };
+    return { engine, balls };
   }, [screenWidth, screenHeight]);
 
   useEffect(() => {

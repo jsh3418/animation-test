@@ -6,16 +6,11 @@ import type { AccelData } from '../hooks/useAccelerometer';
 import { GRAVITY_SCALE, BALL_COUNT } from '../physics/constants';
 import type { SharedValue } from 'react-native-reanimated';
 
-export interface SkiaPhysicsState {
-  positions: SharedValue<number[]>;
-  balls: BallDef[];
-}
-
 export function useSkiaPhysicsBridge(
   engine: Matter.Engine | null,
   balls: BallDef[],
   accelRef: React.MutableRefObject<AccelData>,
-): SkiaPhysicsState {
+): SharedValue<number[]> {
   // Flat array: [x0, y0, x1, y1, ...] — 2 values per ball
   const positions = useSharedValue<number[]>(new Array(BALL_COUNT * 2).fill(0));
 
@@ -61,5 +56,5 @@ export function useSkiaPhysicsBridge(
     return () => cancelAnimationFrame(animFrameId);
   }, [engine, balls]);
 
-  return { positions, balls };
+  return positions;
 }

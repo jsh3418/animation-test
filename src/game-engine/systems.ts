@@ -4,7 +4,7 @@ import type { MutableRefObject } from 'react';
 import type { AccelData } from '../hooks/useAccelerometer';
 
 export function createAccelerometerSystem(accelRef: MutableRefObject<AccelData>) {
-  return (entities: any, { time }: any) => {
+  return (entities: any) => {
     const engine = entities.physics.engine as Matter.Engine;
     const { x, y } = accelRef.current;
     engine.gravity.x = -x * GRAVITY_SCALE;

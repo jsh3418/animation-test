@@ -9,5 +9,5 @@ export function useScreenDimensions() {
 
   const availableHeight = height - insets.top - insets.bottom - TAB_BAR_HEIGHT;
 
-  return { width, height: availableHeight, insets };
+  return { width, height: availableHeight };
 }

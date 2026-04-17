@@ -41,24 +41,24 @@ function GameEngineContent({ width, height }: { width: number; height: number })
 function ReanimatedContent({ width, height }: { width: number; height: number }) {
   const { engine, balls } = usePhysicsEngine(width, height);
   const accelRef = useAccelerometer(16);
-  const { positions, balls: reanimatedBalls } = useSkiaPhysicsBridge(engine, balls, accelRef);
+  const positions = useSkiaPhysicsBridge(engine, balls, accelRef);
 
   if (!engine) return null;
 
   return (
-    <ReanimatedPhysicsView positions={positions} balls={reanimatedBalls} width={width} height={height} />
+    <ReanimatedPhysicsView positions={positions} balls={balls} width={width} height={height} />
   );
 }
 
 function SkiaContent({ width, height }: { width: number; height: number }) {
   const { engine, balls } = usePhysicsEngine(width, height);
   const accelRef = useAccelerometer(16);
-  const { positions, balls: skiaBalls } = useSkiaPhysicsBridge(engine, balls, accelRef);
+  const positions = useSkiaPhysicsBridge(engine, balls, accelRef);
 
   if (!engine) return null;
 
   return (
-    <SkiaPhysicsCanvas positions={positions} balls={skiaBalls} width={width} height={height} />
+    <SkiaPhysicsCanvas positions={positions} balls={balls} width={width} height={height} />
   );
 }
 
