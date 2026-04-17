@@ -17,7 +17,6 @@ React Native에서 물리 기반 애니메이션을 렌더러별로 비교해보
 npm install
 npm run ios      # iOS
 npm run android  # Android
-npm run web      # Web
 ```
 
 ## 디렉토리
